@@ -1,8 +1,6 @@
 #include "main.h"
-
 /**
  * @filename: points to the name of the file to create.
- * the sript below is a function that creates a file.
  * create_file - Creates a file with a given filename.
  * @text_content1: points to a string that is to be written to the file.
  * @fj - a variable
