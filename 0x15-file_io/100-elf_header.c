@@ -18,22 +18,24 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 
 /**
- * check_elf – This checks if a file is an ELF file or not.
- * @e_ident: This points to an array containing the ELF magic numbers.
+ * check_elf - Checks if a file is an ELF file.
+ *
+ * @e_ident: A pointer to an array containing 
+ *  the ELF magic numbers.
  *
  * Description: If the file is not an ELF file - exit code 98.
  *
  */
 void check_elf(unsigned char *e_ident)
 {
-	int ind;
+	int index;
 
-	for (ind = 0; ind < 4; ind++)
+	for (index = 0; index < 4; index++)
 	{
-		if (e_ident[ind] != 127 &&
-		    e_ident[ind] != 'E' &&
-		    e_ident[ind] != 'L' &&
-		    e_ident[ind] != 'F')
+		if (e_ident[index] != 127 &&
+		    e_ident[index] != 'E' &&
+		    e_ident[index] != 'L' &&
+		    e_ident[index] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -42,24 +44,25 @@ void check_elf(unsigned char *e_ident)
 }
 
 /**
- * print_magic – This Prints the magic numbers of an ELF header.
+ * print_magic - Prints the magic numbers of an ELF header.
  *
- * @e_ident: points to an array containing the ELF magic numbers.
+ * @e_ident: A pointer to an array containing
+ *  the ELF magic numbers.
  *
  * Description: Magic numbers are separated by spaces.
  *
  */
 void print_magic(unsigned char *e_ident)
 {
-	int ind;
+	int index;
 
 	printf(" Magic: ");
 
-	for (ind = 0; ind < EI_NIDENT; ind++)
+	for (index = 0; index < EI_NIDENT; index++)
 	{
-		printf("%02x", e_ident[ind]);
+		printf("%02x", e_ident[index]);
 
-		if (ind == EI_NIDENT - 1)
+		if (index == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
@@ -67,10 +70,9 @@ void print_magic(unsigned char *e_ident)
 }
 
 /**
- * print_class – This prints the class of an ELF header.
+ * print_class - Prints the class of an ELF header.
  *
- * @e_ident: points to an array containing the ELF class.
- *
+ * @e_ident: A pointer to an array containing the ELF class.
  */
 void print_class(unsigned char *e_ident)
 {
@@ -94,7 +96,8 @@ void print_class(unsigned char *e_ident)
 
 /**
  * print_data - Prints the data of an ELF header.
- * @e_ident: points to an array containing the ELF class.
+ * @e_ident: A pointer to an array containing the ELF class.
+ *
  *
  */
 void print_data(unsigned char *e_ident)
@@ -118,8 +121,9 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
- * print_version – This prints the version of an ELF header.
- * @e_ident: points to an array containing the ELF version.
+ * print_version - Prints the version of an ELF header.
+ *
+ * @e_ident: A pointer to an array containing the ELF version.
  *
  **/
 void print_version(unsigned char *e_ident)
@@ -141,7 +145,7 @@ void print_version(unsigned char *e_ident)
 /**
  * print_osabi - Prints the OS/ABI of an ELF header.
  *
- * @e_ident: This points to an array containing the ELF version.
+ * @e_ident: A pointer to an array containing the ELF version.
  *
  */
 void print_osabi(unsigned char *e_ident)
@@ -188,8 +192,8 @@ void print_osabi(unsigned char *e_ident)
 /**
  * print_abi - Prints the ABI version of an ELF header.
  *
- * @e_ident: A pointer to an array containing the ELF ABI version.
- *
+ * @e_ident: A pointer to an array containing
+ *  the ELF ABI version.
  */
 void print_abi(unsigned char *e_ident)
 {
@@ -201,7 +205,7 @@ void print_abi(unsigned char *e_ident)
  * print_type - Prints the type of an ELF header.
  * @e_type: The ELF type.
  *
- * @e_ident: points to an array containing the ELF class.
+ * @e_ident: A pointer to an array containing the ELF class.
  *
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
@@ -234,11 +238,10 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 }
 
 /**
- * print_entry – This prints the entry point of an ELF header.
- *
+ * print_entry - Prints the entry point of an ELF header.
  * @e_entry: The address of the ELF entry point.
- * @e_ident: points to an array containing the ELF class.
  *
+ * @e_ident: A pointer to an array containing the ELF class.
  */
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
@@ -264,7 +267,6 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
  * @elf: The file descriptor of the ELF file.
  *
  * Description: If the file cannot be closed - exit code 98.
- *
  */
 void close_elf(int elf)
 {
@@ -281,13 +283,14 @@ void close_elf(int elf)
  * ELF header at the start of an ELF file.
  *
  * @argc: The number of arguments supplied to the program.
- *
  * @argv: An array of pointers to the arguments.
  *
- * Return: returns 0 on success.
+ *
+ * Return: 0 on success.
  *
  * Description: If the file is not an ELF File or
  * the function fails - exit code 98.
+ *
  *
  */
 int main(int __attribute__((__unused__)) argc, char *argv[])
