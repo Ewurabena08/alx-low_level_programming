@@ -1,1 +1,0 @@
-ALX project bit manipulation
